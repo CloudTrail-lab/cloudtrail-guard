@@ -1,0 +1,34 @@
+# Environment
+.env
+
+# Frontend
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+
+# Logs / Runtime data
+logs/
+*.log
+backend/uploads/
+backend/runtime-data/
+
+# Real CloudTrail / Sensitive Data
+# Do not commit real logs. Keep only sanitized sample-data/ files.
+real-data/
+prod-data/
+sensitive/
+backup/
+dump/
+*.ndjson
+*.json.gz
+
+
+# OS
+.DS_Store
+Thumbs.db

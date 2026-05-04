@@ -1,0 +1,167 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAI123456789EXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/admin-role",
+        "accountId": "123456789012",
+        "userName": "admin-role"
+      },
+      "eventTime": "2026-05-02T10:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.45",
+      "userAgent": "Mozilla/5.0 Console",
+      "requestParameters": { "mfaUsed": "No" },
+      "responseElements": { "ConsoleLogin": "Success" },
+      "eventID": "evt-001",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn"
+    },
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAI123456789EXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/admin-role",
+        "accountId": "123456789012",
+        "userName": "admin-role"
+      },
+      "eventTime": "2026-05-02T10:05:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateUser",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.45",
+      "userAgent": "aws-cli/2.15.0",
+      "requestParameters": { "userName": "new-admin", "path": "/" },
+      "responseElements": { "user": { "arn": "arn:aws:iam::123456789012:user/new-admin" } },
+      "eventID": "evt-002",
+      "readOnly": false,
+      "eventType": "AwsApiCall"
+    },
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAI123456789EXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/admin-role",
+        "accountId": "123456789012",
+        "userName": "admin-role"
+      },
+      "eventTime": "2026-05-02T10:10:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "AttachUserPolicy",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.45",
+      "userAgent": "aws-cli/2.15.0",
+      "requestParameters": {
+        "userName": "new-admin",
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "responseElements": null,
+      "eventID": "evt-003",
+      "readOnly": false,
+      "eventType": "AwsApiCall"
+    },
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDANEWADMINEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/new-admin",
+        "accountId": "123456789012",
+        "userName": "new-admin"
+      },
+      "eventTime": "2026-05-02T10:16:00Z",
+      "eventSource": "sts.amazonaws.com",
+      "eventName": "AssumeRole",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "203.0.113.45",
+      "userAgent": "aws-cli/2.15.0",
+      "requestParameters": {
+        "roleArn": "arn:aws:iam::123456789012:role/cross-account-role",
+        "roleSessionName": "new-admin-session"
+      },
+      "responseElements": { "credentials": "<redacted>" },
+      "eventID": "evt-004",
+      "readOnly": false,
+      "eventType": "AwsApiCall"
+    },
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROACROSSACCOUNT:new-admin-session",
+        "arn": "arn:aws:sts::123456789012:assumed-role/cross-account-role/new-admin-session",
+        "accountId": "123456789012",
+        "sessionContext": {
+          "sessionIssuer": { "type": "Role", "userName": "cross-account-role" }
+        }
+      },
+      "eventTime": "2026-05-02T10:22:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "GetObject",
+      "awsRegion": "ap-northeast-2",
+      "sourceIPAddress": "203.0.113.45",
+      "userAgent": "aws-cli/2.15.0",
+      "requestParameters": { "bucketName": "sensitive-bucket", "key": "finance/customer-export.csv" },
+      "responseElements": null,
+      "eventID": "evt-005",
+      "readOnly": true,
+      "eventType": "AwsApiCall"
+    },
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAIDEVEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/dev-user",
+        "accountId": "123456789012",
+        "userName": "dev-user"
+      },
+      "eventTime": "2026-05-02T10:28:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "AuthorizeSecurityGroupIngress",
+      "awsRegion": "ap-northeast-2",
+      "sourceIPAddress": "198.51.100.91",
+      "userAgent": "Terraform/1.8",
+      "requestParameters": {
+        "groupId": "sg-0badbeef",
+        "ipProtocol": "tcp",
+        "fromPort": 22,
+        "toPort": 22,
+        "cidrIp": "0.0.0.0/0"
+      },
+      "responseElements": { "return": true },
+      "eventID": "evt-006",
+      "readOnly": false,
+      "eventType": "AwsApiCall"
+    },
+    {
+      "eventVersion": "1.08",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROABACKUP:session",
+        "arn": "arn:aws:sts::123456789012:assumed-role/backup-role/session",
+        "accountId": "123456789012",
+        "sessionContext": {
+          "sessionIssuer": { "type": "Role", "userName": "backup-role" }
+        }
+      },
+      "eventTime": "2026-05-02T11:34:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "aws-cli/2.15.0",
+      "requestParameters": { "name": "organization-trail" },
+      "responseElements": null,
+      "eventID": "evt-007",
+      "readOnly": false,
+      "eventType": "AwsApiCall"
+    }
+  ]
+}

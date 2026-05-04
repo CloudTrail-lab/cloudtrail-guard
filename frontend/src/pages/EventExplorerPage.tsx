@@ -1,0 +1,11 @@
+import { Search } from "lucide-react";
+import type { NormalizedEvent } from "../types/domain";
+import { Badge, Card, riskBg } from "../components/ui";
+import { Section } from "./DashboardPage";
+
+export function EventExplorerPage({ events, openEvent }: { events: NormalizedEvent[]; openEvent: (event: NormalizedEvent) => void }) {
+  return <div className="space-y-5"><Section title="Event Explorer" description="Search, filter, and inspect normalized CloudTrail events." icon={<Search size={20} />} />
+    <Card className="p-5"><div className="mb-4 flex flex-wrap items-center gap-3"><Badge className="border-slate-700 bg-slate-900 text-slate-300">{events.length} events</Badge><Badge className="border-slate-700 bg-slate-900 text-slate-300">{new Set(events.map(e => e.principal)).size} principals</Badge><Badge className="border-slate-700 bg-slate-900 text-slate-300">{new Set(events.map(e => e.sourceIPAddress)).size} source IPs</Badge></div>
+      <div className="overflow-hidden rounded-2xl border border-slate-800"><table className="w-full min-w-[920px] text-left text-sm"><thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-500"><tr><th className="px-4 py-3">Time</th><th className="px-4 py-3">Event</th><th className="px-4 py-3">Principal</th><th className="px-4 py-3">Source IP</th><th className="px-4 py-3">Region</th><th className="px-4 py-3">Status</th><th className="px-4 py-3">Risk</th></tr></thead><tbody className="divide-y divide-slate-800">{events.map(event => <tr key={event.eventID} onClick={() => openEvent(event)} className="cursor-pointer bg-slate-950/40 hover:bg-blue-500/5"><td className="px-4 py-3 font-mono text-xs text-slate-400">{event.eventTime.slice(11, 19)}</td><td className="px-4 py-3 font-medium text-slate-100">{event.eventName}</td><td className="px-4 py-3 text-slate-300">{event.principal}</td><td className="px-4 py-3 font-mono text-xs text-slate-400">{event.sourceIPAddress}</td><td className="px-4 py-3 text-slate-400">{event.awsRegion}</td><td className="px-4 py-3"><Badge className="border-emerald-500/25 bg-emerald-500/10 text-emerald-200">{event.eventStatus}</Badge></td><td className="px-4 py-3"><Badge className={riskBg(event.risk_score)}>{event.risk_score}</Badge></td></tr>)}</tbody></table></div>
+    </Card></div>;
+}
