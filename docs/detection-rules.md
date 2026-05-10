@@ -12,3 +12,5 @@
 | rule-delete-trail | DeleteTrail | 100 | 감사 로그 삭제 |
 | rule-open-security-group | AuthorizeSecurityGroupIngress + 0.0.0.0/0 | 85 | 공개 인바운드 허용 |
 | rule-put-bucket-policy | PutBucketPolicy | 75 | S3 Bucket 정책 변경 |
+
+
