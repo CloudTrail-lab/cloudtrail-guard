@@ -1,0 +1,3 @@
+[submodule "cloudtrail-data"]
+	path = cloudtrail-data
+	url = https://github.com/CloudTrail-lab/cloudtrail-data.git
