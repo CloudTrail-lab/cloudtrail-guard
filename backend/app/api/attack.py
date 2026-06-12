@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.data.mock_store import get_alerts, get_events
+from app.schemas.data.mock_store import get_alerts, get_events
 from app.services.attack_reconstructor import reconstruct_attack
 
 router = APIRouter(prefix="/api/attack", tags=["attack"])

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.data.mock_store import get_alerts, get_events
+from app.schemas.data.mock_store import get_alerts, get_events
 from app.services.dashboard_builder import build_dashboard
 
 router = APIRouter(prefix="/api/dashboard", tags=["dashboard"])

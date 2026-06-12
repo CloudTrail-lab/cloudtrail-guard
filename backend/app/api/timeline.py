@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.data.mock_store import get_events
+from app.schemas.data.mock_store import get_events
 from app.services.timeline_builder import build_timeline
 
 router = APIRouter(prefix="/api/timeline", tags=["timeline"])

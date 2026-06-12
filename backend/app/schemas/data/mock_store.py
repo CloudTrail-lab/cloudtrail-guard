@@ -4,7 +4,7 @@ from app.services.cloudtrail_parser import extract_records, load_json_file
 from app.services.normalizer import normalize_records
 from app.services.alert_generator import generate_alerts
 
-ROOT_DIR = Path(__file__).resolve().parents[3]
+ROOT_DIR = Path(__file__).resolve().parents[4]
 SAMPLE_PATH = ROOT_DIR / "sample-data" / "cloudtrail-privilege-escalation.json"
 
 EVENTS: list[dict] = []

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import alerts, attack, dashboard, events, timeline
-from app.data.mock_store import load_sample
+from app.schemas.data.mock_store import load_sample
 
 app = FastAPI(title="CloudTrace-Guard API", version="0.1.0")
 

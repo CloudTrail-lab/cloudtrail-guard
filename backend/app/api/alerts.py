@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Query
-from app.data.mock_store import get_alerts, update_alert_status
+from app.schemas.data.mock_store import get_alerts, update_alert_status
 from app.schemas.domain import AlertStatusUpdate
 
 router = APIRouter(prefix="/api/alerts", tags=["alerts"])

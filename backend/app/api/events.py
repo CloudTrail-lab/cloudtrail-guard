@@ -1,5 +1,5 @@
 from fastapi import APIRouter, File, HTTPException, Query, UploadFile
-from app.data.mock_store import get_events, set_records, load_sample
+from app.schemas.data.mock_store import get_events, set_records, load_sample
 from app.services.cloudtrail_parser import CloudTrailParseError, extract_records, load_json_bytes
 
 router = APIRouter(prefix="/api/events", tags=["events"])
